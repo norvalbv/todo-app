@@ -1,0 +1,36 @@
+// @import '../app.scss';
+
+.list {
+  border-bottom: 1px solid #333;
+  width: 80%;
+  margin: 1rem auto 0;
+  justify-content: space-between;
+  align-content: center;
+  display: flex;
+}
+
+.remove {
+  cursor: pointer;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sorting {
+  background-color: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.clear-list { 
+  color: inherit;
+  cursor: pointer;
+}

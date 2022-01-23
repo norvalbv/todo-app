@@ -1,0 +1,46 @@
+.list {
+  border-bottom: 1px solid #333;
+  width: 80%;
+  margin: 1rem auto 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.remove {
+  cursor: pointer;
+}
+
+.complete {
+  text-decoration: line-through;
+}
+
+.bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sorting {
+  background-color: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.clear-list {
+  color: inherit;
+  cursor: pointer;
+}
+/*# sourceMappingURL=list.css.map */

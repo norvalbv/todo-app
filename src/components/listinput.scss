@@ -1,0 +1,29 @@
+@import "../app.scss";
+
+.upper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 1rem;
+}
+
+.todo-input {
+  background-color: $nd-very-dark-desaturated-blue;
+  color: inherit;
+  border: none;
+  font-size: inherit;
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+
+  &:focus {
+      outline: none;
+  }
+}
+
+.checkbox {
+  border: 1px solid $nd-dark-grayish-blue;
+  padding: 0.25rem;
+  border-radius: 10px;
+}
