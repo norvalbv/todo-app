@@ -24,7 +24,7 @@ export default function ListItem({ onSubmit }) {
       <form onSubmit={handleSubmit} className="todo-form">
         <img src={check} alt="check box" className="checkbox" />
         <input
-          placeholder="Update your item"
+          placeholder="Create a new todo..."
           value={input}
           onChange={handleChange}
           name="text"

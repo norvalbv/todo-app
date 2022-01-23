@@ -43,14 +43,13 @@ body {
 
 .list {
   padding: 0.5rem 1rem;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 2rem;
 }
 
 .list:hover .remove {
@@ -73,24 +72,21 @@ body {
   outline-color: linear-gradient(#57ddff, #c058f3);
 }
 
-.list .checkbox-complete {
-  background: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
-  background: linear-gradient(#57ddff, #c058f3);
-  content-visibility: visible;
-}
-
-.list .list-text {
-  justify-self: flex-start !important;
-}
-
 .list .remove {
   opacity: 0;
   height: 10px;
   width: 10px;
+  justify-self: flex-end !important;
 }
 
 .list .complete {
   text-decoration: line-through;
+}
+
+.list .checkbox-complete {
+  background: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
+  background: linear-gradient(#57ddff, #c058f3);
+  content-visibility: visible;
 }
 
 .bottom-nav {
@@ -140,6 +136,8 @@ body {
 
 .dark .list-container {
   background-color: #25273c;
+  -webkit-box-shadow: 0 10px 10px #161722;
+          box-shadow: 0 10px 10px #161722;
 }
 
 .dark .list-container .list {
@@ -148,10 +146,6 @@ body {
 
 .dark .list-container .list .complete {
   color: #777a92;
-}
-
-.dark .list-container .list-text {
-  border-color: #161722;
 }
 
 .dark .bottom-nav {
@@ -172,6 +166,8 @@ body {
 
 .light .list-container {
   background-color: #fafafa;
+  -webkit-box-shadow: 0 10px 10px #d2d3db;
+          box-shadow: 0 10px 10px #d2d3db;
 }
 
 .light .list-container .list {
@@ -180,10 +176,6 @@ body {
 
 .light .list-container .list .complete {
   color: #d2d3db;
-}
-
-.light .list-container .list-text {
-  border-color: #161722;
 }
 
 .light .bottom-nav {

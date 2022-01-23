@@ -8,9 +8,9 @@
 
 .list {
   padding: 0.5rem 1rem;
-  justify-content: space-between;
-  align-content: center;
+  align-items: center;
   display: flex;
+  gap: 2rem;
 
   &:hover {
     .remove {
@@ -34,23 +34,20 @@
     }
   }
 
-  .checkbox-complete {
-    background: $p-check-bg;
-    content-visibility: visible;
-  }
-
-  .list-text {
-    justify-self: flex-start !important;
-  }
-
   .remove {
     opacity: 0;
     height: 10px;
     width: 10px;
+    justify-self: flex-end !important;
   }
 
   .complete {
     text-decoration: line-through;
+  }
+
+  .checkbox-complete {
+    background: $p-check-bg;
+    content-visibility: visible;
   }
 }
 
@@ -91,6 +88,7 @@
 .dark {
   .list-container {
     background-color: $nd-very-dark-desaturated-blue;
+    box-shadow: 0 10px 10px $nd-very-dark-blue;
 
     .list {
       border-bottom: 1px solid $nd-dark-grayish-blue;
@@ -98,11 +96,6 @@
       .complete {
         color: $nd-dark-grayish-blue;
       }
-    }
-
-
-    .list-text {
-      border-color: $nd-very-dark-blue;
     }
   }
 
@@ -133,6 +126,7 @@
   color: $nl-very-dark-grayish-blue;
   .list-container {
     background-color: $nl-very-light-gray;
+    box-shadow: 0 10px 10px $nl-grayish-blue;
 
     .list {
       border-bottom: 1px solid $nl-dark-grayish-blue;
@@ -140,11 +134,6 @@
       .complete {
         color: $nl-grayish-blue;
       }
-    }
-
-
-    .list-text {
-      border-color: $nd-very-dark-blue;
     }
   }
 
@@ -168,4 +157,3 @@
     }
   }
 }
-

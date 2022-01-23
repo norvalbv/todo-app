@@ -60,32 +60,40 @@ export default function Body() {
   };
 
   return (
-    <div className={dark ? "body dark" : "body light"}>
-      <header>
-        <h1>TODO</h1>
-        {dark ? (
-          <img onClick={setTheme} src={sunIcon} alt="light/dark theme button" />
-        ) : (
-          <img
-            onClick={setTheme}
-            src={moonIcon}
-            alt="light/dark theme button"
-          />
-        )}
-      </header>
-      <div className="todo-container">
-        <ListInput onSubmit={addTodo} setTodos={setTodos} />
-        <List
-          todos={todos}
-          setTodos={setTodos}
-          handleRemove={handleRemove}
-          listNum={todos.length}
-          setActive={setActive}
-          setAll={setAll}
-          setComplete={setComplete}
-        />
+    <div className={dark ? "dark" : "light"}>
+      <div className="app">
+        <div className="body">
+          <header>
+            <h1>TODO</h1>
+            {dark ? (
+              <img
+                onClick={setTheme}
+                src={sunIcon}
+                alt="light/dark theme button"
+              />
+            ) : (
+              <img
+                onClick={setTheme}
+                src={moonIcon}
+                alt="light/dark theme button"
+              />
+            )}
+          </header>
+          <div className="todo-container">
+            <ListInput onSubmit={addTodo} setTodos={setTodos} />
+            <List
+              todos={todos}
+              setTodos={setTodos}
+              handleRemove={handleRemove}
+              listNum={todos.length}
+              setActive={setActive}
+              setAll={setAll}
+              setComplete={setComplete}
+            />
+          </div>
+          <p className="reorder">Drag and drop to reorder list</p>
+        </div>
       </div>
-      <p className="reorder">Drag and drop to reorder list</p>
     </div>
   );
 }

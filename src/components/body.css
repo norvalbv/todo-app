@@ -20,8 +20,6 @@ body {
 }
 
 .app {
-  background-image: url("./images/bg-desktop-dark.jpg");
-  background-color: #161722;
   background-repeat: no-repeat;
   background-size: 100vw;
   min-height: 100vh;
@@ -32,7 +30,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #cacde8;
 }
 
 .body {
@@ -83,7 +80,17 @@ body {
   color: #777a92;
 }
 
+.dark .app {
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-color: #161722;
+}
+
 .light {
   color: #9394a5;
+}
+
+.light .app {
+  background-image: url("../images/bg-desktop-light.jpg");
+  background-color: #fafafa;
 }
 /*# sourceMappingURL=body.css.map */
