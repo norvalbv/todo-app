@@ -21,10 +21,9 @@ body {
 
 .app {
   background-image: url("./images/bg-desktop-dark.jpg");
+  background-color: #161722;
   background-repeat: no-repeat;
   background-size: 100vw;
-  background-color: #161722;
-  color: #cacde8;
   min-height: 100vh;
   width: 100vw;
   display: -webkit-box;
@@ -33,12 +32,12 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #cacde8;
 }
 
 .body {
   width: 50%;
   min-height: 100vh;
-  background: #000;
   padding: 4rem 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -50,7 +49,7 @@ body {
   text-align: center;
 }
 
-header {
+.body header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,20 +61,29 @@ header {
           align-items: flex-start;
 }
 
-header h1 {
-  letter-spacing: 5px;
+.body header h1 {
+  letter-spacing: 20px;
+  color: #fafafa;
 }
 
-header img {
+.body header img {
   cursor: pointer;
 }
 
-.todo-container {
+.body .todo-container {
   margin: 2rem 0;
 }
 
-.comment {
+.body .reorder {
   font-size: 12px;
   justify-self: flex-end;
+}
+
+.dark {
+  color: #777a92;
+}
+
+.light {
+  color: #9394a5;
 }
 /*# sourceMappingURL=body.css.map */

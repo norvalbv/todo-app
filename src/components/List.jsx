@@ -1,5 +1,6 @@
 import cross from "../images/icon-cross.svg";
-import "./list.css";
+import check from "../images/icon-check.svg";
+import "./list.scss";
 
 export default function List({
   todos,
@@ -10,9 +11,6 @@ export default function List({
   setAll,
   setComplete,
 }) {
-
-
-
   const completeTodo = (id, complete) => {
     setTodos(
       todos.map((todo) => {
@@ -28,11 +26,19 @@ export default function List({
   };
 
   return (
-    <div style={{ paddingBottom: "2.5rem" }}>
+    <div style={{ paddingBottom: "2.5rem" }} className="list-container">
       {todos.map(({ text, id, complete }) => (
         <div key={id} className="list">
+          <img
+            src={check}
+            alt="check box"
+            className={complete ? "checkbox checkbox-complete" : "checkbox"}
+            onClick={() => {
+              completeTodo(id, complete);
+            }}
+          />
           <div
-            className={complete ? "complete" : null}
+            className={complete ? "complete list-text" : "list-text"}
             onClick={() => {
               completeTodo(id, complete);
             }}
@@ -47,9 +53,9 @@ export default function List({
           />
         </div>
       ))}
-      <div className="bottom">
+      <div className="bottom-nav">
         <div className="left">
-          <p>{listNum} Items Left</p>
+          <p className="items-left">{listNum} Items Left</p>
         </div>
         <div className="middle">
           <button className="sorting" onClick={() => setAll()}>

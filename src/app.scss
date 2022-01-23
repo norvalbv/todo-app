@@ -24,7 +24,7 @@ body {
 // primary
 
 $p-bright-blue: hsl(220, 98%, 61%);
-$p-check-bg: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$p-check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
 // neutral
 
@@ -47,13 +47,12 @@ $nd-very-dark-grayish-blue2: hsl(237, 14%, 26%);
 
 .app {
   background-image: url("./images/bg-desktop-dark.jpg");
+  background-color: $nd-very-dark-blue;
   background-repeat: no-repeat;
   background-size: 100vw;
-  background-color: $nd-very-dark-blue;
-  color: $nd-light-grayish-blue;
   min-height: 100vh;
   width: 100vw;
   display: flex;
-//   align-items: center;
   justify-content: center;
+  color: $nd-light-grayish-blue;
 }

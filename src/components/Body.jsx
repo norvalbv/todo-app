@@ -7,8 +7,7 @@ import moonIcon from "../images/icon-moon.svg";
 
 export default function Body() {
   const [todos, setTodos] = useState([]);
-
-  // const [completedTodos, setCompletedTodos] = useState([]);
+  const [hiddenList, setHiddenList] = useState([]);
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -25,27 +24,54 @@ export default function Body() {
   };
 
   const setAll = () => {
-    console.log(todos)
-    setTodos(todos);
+    setTodos(hiddenList);
   };
 
   const setActive = () => {
     const active = [...todos].filter((todo) => !todo.complete);
-    console.log(active);
+    if (active.length < hiddenList.length) {
+      setTodos(hiddenList);
+    }
+
+    // store full list
+    setHiddenList(todos);
+
+    // showcase list
     setTodos(active);
   };
 
   const setComplete = () => {
-    const active = [...todos].filter((todo) => todo.complete);
-    console.log(active);
-    setTodos(active);
+    const complete = [...todos].filter((todo) => todo.complete);
+
+    if (complete.length < hiddenList.length) {
+      setTodos(hiddenList);
+    }
+
+    // store full list
+    setHiddenList(todos);
+
+    // showcase list
+    setTodos(complete);
+  };
+
+  const [dark, setDark] = useState(true);
+  const setTheme = () => {
+    setDark(() => !dark);
   };
 
   return (
-    <div className="body">
+    <div className={dark ? "body dark" : "body light"}>
       <header>
         <h1>TODO</h1>
-        <img src={moonIcon} alt="light/dark theme button" />
+        {dark ? (
+          <img onClick={setTheme} src={sunIcon} alt="light/dark theme button" />
+        ) : (
+          <img
+            onClick={setTheme}
+            src={moonIcon}
+            alt="light/dark theme button"
+          />
+        )}
       </header>
       <div className="todo-container">
         <ListInput onSubmit={addTodo} setTodos={setTodos} />
@@ -59,7 +85,7 @@ export default function Body() {
           setComplete={setComplete}
         />
       </div>
-      <p className="comment">Drag and drop to reorder list</p>
+      <p className="reorder">Drag and drop to reorder list</p>
     </div>
   );
 }

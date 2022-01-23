@@ -14,28 +14,24 @@ export default function ListItem({ onSubmit }) {
     onSubmit({
       id: Math.random(),
       text: input,
-      complete: false
+      complete: false,
     });
     setInput("");
   };
 
   return (
-    <div className="listinput">
-      <div className="upper">
-        <form onSubmit={handleSubmit} className="todo-input">
-          <img src={check} alt="check box" className="checkbox" />
-          <input
-            placeholder="Update your item"
-            value={input}
-            onChange={handleChange}
-            name="text"
-            // ref={inputRef}
-            className=" todo-input edit"
-            
-          />
-        </form>
-      </div>
-      {/* <button onClick={() => setTodos([])}>Reset List</button> */}
+    <div className="todo-input-container">
+      <form onSubmit={handleSubmit} className="todo-form">
+        <img src={check} alt="check box" className="checkbox" />
+        <input
+          placeholder="Update your item"
+          value={input}
+          onChange={handleChange}
+          name="text"
+          // ref={inputRef}
+          className="todo-input"
+        />
+      </form>
     </div>
   );
 }

@@ -1,36 +1,171 @@
-// @import '../app.scss';
+@import "../app.scss";
+
+.list-container {
+  border-radius: 5px;
+  width: 27.25rem;
+  margin: 0 auto;
+}
 
 .list {
-  border-bottom: 1px solid #333;
-  width: 80%;
-  margin: 1rem auto 0;
+  padding: 0.5rem 1rem;
   justify-content: space-between;
   align-content: center;
   display: flex;
+
+  &:hover {
+    .remove {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  .checkbox {
+    border: 1px solid $nd-dark-grayish-blue;
+    padding: 0.25rem;
+    border-radius: 10px;
+    cursor: pointer;
+    content-visibility: hidden;
+    width: 10px;
+    height: 10px;
+
+    &:hover {
+      border-color: $p-check-bg;
+      outline-color: $p-check-bg;
+    }
+  }
+
+  .checkbox-complete {
+    background: $p-check-bg;
+    content-visibility: visible;
+  }
+
+  .list-text {
+    justify-self: flex-start !important;
+  }
+
+  .remove {
+    opacity: 0;
+    height: 10px;
+    width: 10px;
+  }
+
+  .complete {
+    text-decoration: line-through;
+  }
 }
 
-.remove {
-  cursor: pointer;
-}
-
-.complete {
-  text-decoration: line-through;
-}
-
-.bottom {
+.bottom-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
+
+  .left {
+    flex: 1;
+  }
+
+  .middle {
+    flex: 1;
+
+    .sorting {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+  }
+
+  .right {
+    flex: 1;
+    .clear-list {
+      color: inherit;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  }
 }
 
-.sorting {
-  background-color: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
+// Strictly Dark Theme
+
+.dark {
+  .list-container {
+    background-color: $nd-very-dark-desaturated-blue;
+
+    .list {
+      border-bottom: 1px solid $nd-dark-grayish-blue;
+
+      .complete {
+        color: $nd-dark-grayish-blue;
+      }
+    }
+
+
+    .list-text {
+      border-color: $nd-very-dark-blue;
+    }
+  }
+
+  .bottom-nav {
+    color: $nd-very-dark-grayish-blue;
+
+    .middle {
+      .sorting {
+        &:hover {
+          color: $p-bright-blue;
+        }
+      }
+    }
+
+    .right {
+      .clear-list {
+        &:hover {
+          color: $p-bright-blue;
+        }
+      }
+    }
+  }
 }
 
-.clear-list { 
-  color: inherit;
-  cursor: pointer;
+// Strictly Light Theme
+
+.light {
+  color: $nl-very-dark-grayish-blue;
+  .list-container {
+    background-color: $nl-very-light-gray;
+
+    .list {
+      border-bottom: 1px solid $nl-dark-grayish-blue;
+
+      .complete {
+        color: $nl-grayish-blue;
+      }
+    }
+
+
+    .list-text {
+      border-color: $nd-very-dark-blue;
+    }
+  }
+
+  .bottom-nav {
+    color: $nl-very-dark-grayish-blue;
+
+    .middle {
+      .sorting {
+        &:hover {
+          color: $p-bright-blue;
+        }
+      }
+    }
+
+    .right {
+      .clear-list {
+        &:hover {
+          color: $p-bright-blue;
+        }
+      }
+    }
+  }
 }
+
