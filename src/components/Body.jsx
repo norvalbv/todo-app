@@ -8,6 +8,7 @@ import moonIcon from "../images/icon-moon.svg";
 export default function Body() {
   const [todos, setTodos] = useState([]);
   const [hiddenList, setHiddenList] = useState([]);
+  const [currentlyActive, setCurrentlyActive] = useState("currentlyAll");
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -15,6 +16,8 @@ export default function Body() {
     }
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
+    const newHiddenTodo = [todo, ...hiddenList];
+    setHiddenList(newHiddenTodo);
   };
 
   const handleRemove = (id) => {
@@ -24,34 +27,67 @@ export default function Body() {
   };
 
   const setAll = () => {
+    if (currentlyActive === "currentlyAll") {
+      return;
+    }
+
     setTodos(hiddenList);
+    setCurrentlyActive("currentlyAll");
+    setHiddenList([]);
   };
 
   const setActive = () => {
     const active = [...todos].filter((todo) => !todo.complete);
-    if (active.length < hiddenList.length) {
-      setTodos(hiddenList);
+
+    if (currentlyActive === "currentlyActive") {
+      return;
+    } else if (currentlyActive === "currentlyComplete") {
+      // As the 'hidden list' only changes state
+      const reverseList = [...hiddenList].filter((item) => !item.complete);
+      setTodos(reverseList);
+      setCurrentlyActive("currentlyActive");
+    } else {
+      // store full list
+      setHiddenList(todos);
+      // showcase list
+      setTodos(active);
+      setCurrentlyActive("currentlyActive");
     }
-
-    // store full list
-    setHiddenList(todos);
-
-    // showcase list
-    setTodos(active);
   };
 
   const setComplete = () => {
     const complete = [...todos].filter((todo) => todo.complete);
 
-    if (complete.length < hiddenList.length) {
-      setTodos(hiddenList);
+    if (currentlyActive === "currentlyComplete") {
+      return;
+    } else if (currentlyActive === "currentlyActive") {
+      const reverseList = [...hiddenList].filter((item) => item.complete);
+      setTodos(reverseList);
+      setCurrentlyActive("currentlyComplete");
+    } else {
+      // store full list
+      setHiddenList(todos);
+
+      // showcase list
+      setTodos(complete);
+
+      setCurrentlyActive("currentlyComplete");
     }
+  };
 
-    // store full list
-    setHiddenList(todos);
-
-    // showcase list
-    setTodos(complete);
+  const clearCompleted = () => {
+    if (currentlyActive === "currentlyComplete") {
+      setCurrentlyActive("currentlyAll");
+      const filter = [...hiddenList].filter((item) => !item.complete);
+      setTodos(filter);
+    } else if (currentlyActive === "currentlyActive") {
+      setCurrentlyActive("currentlyAll");
+      const filterCompleted = [...todos].filter((item) => !item.complete);
+      setTodos(filterCompleted);
+    } else {
+      const filterCompleted = [...todos].filter((item) => !item.complete);
+      setTodos(filterCompleted);
+    }
   };
 
   const [dark, setDark] = useState(true);
@@ -89,6 +125,8 @@ export default function Body() {
               setActive={setActive}
               setAll={setAll}
               setComplete={setComplete}
+              currentlyActive={currentlyActive}
+              clearCompleted={clearCompleted}
             />
           </div>
           <p className="reorder">Drag and drop to reorder list</p>

@@ -19,22 +19,6 @@ body {
   font-family: "Josefin Sans", sans-serif;
 }
 
-.app {
-  background-image: url("./images/bg-desktop-dark.jpg");
-  background-color: #161722;
-  background-repeat: no-repeat;
-  background-size: 100vw;
-  min-height: 100vh;
-  width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: #cacde8;
-}
-
 .todo-input-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,6 +63,7 @@ body {
   outline: none;
   color: inherit;
   width: 20rem;
+  caret-color: #3a7bfd;
 }
 
 .dark .todo-form,

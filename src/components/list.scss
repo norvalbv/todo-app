@@ -83,6 +83,10 @@
   }
 }
 
+.currentlyAll, .currentlyActive, .currentlyComplete {
+  color: $p-bright-blue !important;
+}
+
 // Strictly Dark Theme
 
 .dark {

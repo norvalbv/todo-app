@@ -10,6 +10,8 @@ export default function List({
   setActive,
   setAll,
   setComplete,
+  currentlyActive,
+  clearCompleted
 }) {
   const completeTodo = (id, complete) => {
     setTodos(
@@ -58,18 +60,43 @@ export default function List({
           <p className="items-left">{listNum} Items Left</p>
         </div>
         <div className="middle">
-          <button className="sorting" onClick={() => setAll()}>
+          <button
+            // className="sorting"
+            onClick={() => {
+              setAll();
+              console.log(currentlyActive);
+            }}
+            className={
+              currentlyActive === "currentlyAll"
+                ? "currentlyAll sorting"
+                : "sorting"
+            }
+          >
             All
           </button>
-          <button className="sorting" onClick={() => setActive()}>
+          <button
+            className={
+              currentlyActive === "currentlyActive"
+                ? "currentlyAll sorting"
+                : "sorting"
+            }
+            onClick={() => setActive()}
+          >
             Active
           </button>
-          <button className="sorting" onClick={() => setComplete()}>
+          <button
+            className={
+              currentlyActive === "currentlyComplete"
+                ? "currentlyAll sorting"
+                : "sorting"
+            }
+            onClick={() => setComplete()}
+          >
             Completed
           </button>
         </div>
         <div className="right">
-          <button className="clear-list" onClick={() => setTodos([])}>
+          <button className="clear-list" onClick={() => clearCompleted()}>
             Clear Completed
           </button>
         </div>
