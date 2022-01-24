@@ -34,6 +34,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   gap: 2rem;
+  position: relative;
 }
 
 .list:hover .remove {
@@ -46,21 +47,23 @@ body {
   padding: 0.25rem;
   border-radius: 10px;
   cursor: pointer;
-  content-visibility: hidden;
   width: 10px;
   height: 10px;
+  position: relative;
+  outline: none;
 }
 
 .list .checkbox:hover {
-  border-color: linear-gradient(#57ddff, #c058f3);
-  outline-color: linear-gradient(#57ddff, #c058f3);
+  border: 1px solid linear-gradient(#57ddff, #c058f3);
+  outline: 1px solid linear-gradient(#57ddff, #c058f3);
 }
 
 .list .remove {
   opacity: 0;
   height: 10px;
   width: 10px;
-  justify-self: flex-end !important;
+  position: absolute;
+  right: 1rem;
 }
 
 .list .complete {
@@ -70,7 +73,24 @@ body {
 .list .checkbox-complete {
   background: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
   background: linear-gradient(#57ddff, #c058f3);
-  content-visibility: visible;
+  position: relative;
+}
+
+.list .checkbox-complete::after {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 .bottom-nav {
@@ -118,7 +138,16 @@ body {
   border: none;
 }
 
-.currentlyAll, .currentlyActive, .currentlyComplete {
+.clearAll {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.currentlyAll,
+.currentlyActive,
+.currentlyComplete {
   color: #3a7bfd !important;
 }
 

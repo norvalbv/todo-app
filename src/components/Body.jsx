@@ -9,6 +9,8 @@ export default function Body() {
   const [todos, setTodos] = useState([]);
   const [hiddenList, setHiddenList] = useState([]);
   const [currentlyActive, setCurrentlyActive] = useState("currentlyAll");
+  const [todosLeft, setTodosLeft] = useState(0);
+
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -18,6 +20,7 @@ export default function Body() {
     setTodos(newTodos);
     const newHiddenTodo = [todo, ...hiddenList];
     setHiddenList(newHiddenTodo);
+    setTodosLeft(newTodos.length)
   };
 
   const handleRemove = (id) => {
@@ -34,6 +37,8 @@ export default function Body() {
     setTodos(hiddenList);
     setCurrentlyActive("currentlyAll");
     setHiddenList([]);
+    setTodosLeft(hiddenList.length)
+
   };
 
   const setActive = () => {
@@ -46,12 +51,16 @@ export default function Body() {
       const reverseList = [...hiddenList].filter((item) => !item.complete);
       setTodos(reverseList);
       setCurrentlyActive("currentlyActive");
+      setTodosLeft(reverseList.length)
+
     } else {
       // store full list
       setHiddenList(todos);
       // showcase list
       setTodos(active);
       setCurrentlyActive("currentlyActive");
+      setTodosLeft(active.length)
+
     }
   };
 
@@ -64,6 +73,7 @@ export default function Body() {
       const reverseList = [...hiddenList].filter((item) => item.complete);
       setTodos(reverseList);
       setCurrentlyActive("currentlyComplete");
+      setTodosLeft(reverseList.length);
     } else {
       // store full list
       setHiddenList(todos);
@@ -72,6 +82,7 @@ export default function Body() {
       setTodos(complete);
 
       setCurrentlyActive("currentlyComplete");
+      setTodosLeft(complete.length)
     }
   };
 
@@ -80,13 +91,19 @@ export default function Body() {
       setCurrentlyActive("currentlyAll");
       const filter = [...hiddenList].filter((item) => !item.complete);
       setTodos(filter);
+      setTodosLeft(filter.length)
+
     } else if (currentlyActive === "currentlyActive") {
       setCurrentlyActive("currentlyAll");
       const filterCompleted = [...todos].filter((item) => !item.complete);
       setTodos(filterCompleted);
+      setTodosLeft(filterCompleted.length)
+
     } else {
       const filterCompleted = [...todos].filter((item) => !item.complete);
       setTodos(filterCompleted);
+      setTodosLeft(filterCompleted.length)
+
     }
   };
 
@@ -94,6 +111,9 @@ export default function Body() {
   const setTheme = () => {
     setDark(() => !dark);
   };
+
+  
+
 
   return (
     <div className={dark ? "dark" : "light"}>
@@ -122,11 +142,13 @@ export default function Body() {
               setTodos={setTodos}
               handleRemove={handleRemove}
               listNum={todos.length}
+              setTodosLeft={setTodosLeft}
               setActive={setActive}
               setAll={setAll}
               setComplete={setComplete}
               currentlyActive={currentlyActive}
               clearCompleted={clearCompleted}
+              hiddenList={hiddenList}
             />
           </div>
           <p className="reorder">Drag and drop to reorder list</p>

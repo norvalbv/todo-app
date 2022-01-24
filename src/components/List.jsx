@@ -1,6 +1,6 @@
 import cross from "../images/icon-cross.svg";
-import check from "../images/icon-check.svg";
 import "./list.scss";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function List({
   todos,
@@ -11,8 +11,9 @@ export default function List({
   setAll,
   setComplete,
   currentlyActive,
-  clearCompleted
+  clearCompleted,
 }) {
+  
   const completeTodo = (id, complete) => {
     setTodos(
       todos.map((todo) => {
@@ -25,15 +26,23 @@ export default function List({
         return todo;
       })
     );
+    console.log(todos.length)
   };
 
   return (
     <div style={{ paddingBottom: "2.5rem" }} className="list-container">
-      {todos.map(({ text, id, complete }) => (
-        <div key={id} className="list">
-          <img
-            src={check}
-            alt="check box"
+      {/* <DragDropContext> */}
+      {/* <Droppable droppableId="todoList"> */}
+      {/* {(provided) => { */}
+      {todos.map(({ text, id, complete }, index) => (
+        // <Draggable key={id} draggableId={id} index={index}>
+        <div
+          className="list"
+          // {...provided.droppableProps}
+          // ref={provided.innerRef}
+          key={id}
+        >
+          <div
             className={complete ? "checkbox checkbox-complete" : "checkbox"}
             onClick={() => {
               completeTodo(id, complete);
@@ -54,7 +63,12 @@ export default function List({
             onClick={() => handleRemove(id)}
           />
         </div>
+        // </Draggable>
+        //
+        // }
       ))}
+      {/* </Droppable>
+      </DragDropContext> */}
       <div className="bottom-nav">
         <div className="left">
           <p className="items-left">{listNum} Items Left</p>
@@ -101,6 +115,9 @@ export default function List({
           </button>
         </div>
       </div>
+      <button onClick={() => setTodos([])} className="clearAll">
+        Clear all
+      </button>
     </div>
   );
 }
