@@ -1,6 +1,5 @@
 @import "../app.scss";
 
-
 .app {
   background-repeat: no-repeat;
   background-size: 100vw;
@@ -8,12 +7,11 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  // background-image: url("../images/bg-desktop-light.jpg");
-  // background-color: $nl-very-light-gray;
+  align-items: center;
 }
 
 .body {
-  width: 50%;
+  width: 55%;
   min-height: 100vh;
   padding: 4rem 2rem;
   display: flex;
@@ -52,7 +50,7 @@
 
   .app {
     background-image: url("../images/bg-desktop-dark.jpg");
-    background-color: $nd-very-dark-blue;  
+    background-color: $nd-very-dark-blue;
   }
 }
 
@@ -64,5 +62,21 @@
   .app {
     background-image: url("../images/bg-desktop-light.jpg");
     background-color: $nl-very-light-gray;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .app {
+    background-size: 150vw;
+    overflow-x: hidden;
+  }
+
+  .body {
+    width: 75%;
+    padding: 2rem 2rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 }

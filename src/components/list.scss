@@ -2,8 +2,6 @@
 
 .list-container {
   border-radius: 5px;
-  width: 27.25rem;
-  margin: 0 auto;
 }
 
 .list {
@@ -12,6 +10,14 @@
   display: flex;
   gap: 2rem;
   position: relative;
+
+  // &:nth-child(4n + 1) {
+  //   background: $nd-very-dark-blue;
+  // }
+
+  // &:nth-child(4n + 3) {
+  //   background: $nl-very-dark-grayish-blue;
+  // }
 
   &:hover {
     .remove {
@@ -28,11 +34,9 @@
     width: 10px;
     height: 10px;
     position: relative;
-    outline: none;
 
     &:hover {
-      border: 1px solid $p-check-bg;
-      outline: 1px solid $p-check-bg;
+      border-color: $p-bright-blue;
     }
   }
 
@@ -75,7 +79,7 @@
     flex: 1;
   }
 
-  .middle {
+  .todo-filter {
     flex: 1;
 
     .sorting {
@@ -97,17 +101,21 @@
   }
 }
 
-.clearAll {
+.clear-all {
   background: none;
   border: none;
   cursor: pointer;
-  color: inherit;
+  color: $nd-very-dark-grayish-blue;
 }
 
 .currentlyAll,
 .currentlyActive,
 .currentlyComplete {
   color: $p-bright-blue !important;
+}
+
+.list-text {
+  cursor: pointer;
 }
 
 // Strictly Dark Theme
@@ -121,7 +129,7 @@
       border-bottom: 1px solid $nd-dark-grayish-blue;
 
       .complete {
-        color: $nd-dark-grayish-blue;
+        color: $nd-very-dark-grayish-blue;
       }
     }
   }
@@ -129,10 +137,10 @@
   .bottom-nav {
     color: $nd-very-dark-grayish-blue;
 
-    .middle {
+    .todo-filter {
       .sorting {
         &:hover {
-          color: $p-bright-blue;
+          color: $nd-light-grayish-blue-hover;
         }
       }
     }
@@ -140,8 +148,14 @@
     .right {
       .clear-list {
         &:hover {
-          color: $p-bright-blue;
+          color: $nd-light-grayish-blue-hover;
         }
+      }
+    }
+
+    .clear-all {
+      &:hover {
+        color: $nd-light-grayish-blue-hover;
       }
     }
   }
@@ -165,12 +179,12 @@
   }
 
   .bottom-nav {
-    color: $nl-very-dark-grayish-blue;
+    color: $nl-dark-grayish-blue;
 
-    .middle {
+    .todo-filter {
       .sorting {
         &:hover {
-          color: $p-bright-blue;
+          color: $nl-very-dark-grayish-blue;
         }
       }
     }
@@ -178,9 +192,37 @@
     .right {
       .clear-list {
         &:hover {
-          color: $p-bright-blue;
+          color: $nl-very-dark-grayish-blue;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list {
+    .remove {
+      opacity: 1;
+    }
+  }
+
+  .bottom-nav {
+    margin-top: 1rem;
+    position: relative;
+
+    .todo-filter {
+      position: absolute;
+      width: 100%;
+      min-height: 2.5rem;
+      top: 7.5rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .todo-filter {
+      background-color: $nd-very-dark-desaturated-blue;
     }
   }
 }

@@ -22,7 +22,7 @@ export default function ListItem({ onSubmit }) {
   return (
     <div className="todo-input-container">
       <form onSubmit={handleSubmit} className="todo-form">
-        <img src={check} alt="check box" className="checkbox" />
+        <div className="checkbox"></div>
         <input
           placeholder="Create a new todo..."
           value={input}

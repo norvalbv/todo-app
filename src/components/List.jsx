@@ -1,6 +1,7 @@
 import cross from "../images/icon-cross.svg";
 import "./list.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import TodoFilter from "./todofilter";
 
 export default function List({
   todos,
@@ -13,7 +14,6 @@ export default function List({
   currentlyActive,
   clearCompleted,
 }) {
-  
   const completeTodo = (id, complete) => {
     setTodos(
       todos.map((todo) => {
@@ -26,7 +26,7 @@ export default function List({
         return todo;
       })
     );
-    console.log(todos.length)
+    console.log(todos.length);
   };
 
   return (
@@ -73,49 +73,19 @@ export default function List({
         <div className="left">
           <p className="items-left">{listNum} Items Left</p>
         </div>
-        <div className="middle">
-          <button
-            // className="sorting"
-            onClick={() => {
-              setAll();
-              console.log(currentlyActive);
-            }}
-            className={
-              currentlyActive === "currentlyAll"
-                ? "currentlyAll sorting"
-                : "sorting"
-            }
-          >
-            All
-          </button>
-          <button
-            className={
-              currentlyActive === "currentlyActive"
-                ? "currentlyAll sorting"
-                : "sorting"
-            }
-            onClick={() => setActive()}
-          >
-            Active
-          </button>
-          <button
-            className={
-              currentlyActive === "currentlyComplete"
-                ? "currentlyAll sorting"
-                : "sorting"
-            }
-            onClick={() => setComplete()}
-          >
-            Completed
-          </button>
-        </div>
+        <TodoFilter
+          setAll={setAll}
+          currentlyActive={currentlyActive}
+          setActive={setActive}
+          setComplete={setComplete}
+        />
         <div className="right">
           <button className="clear-list" onClick={() => clearCompleted()}>
             Clear Completed
           </button>
         </div>
       </div>
-      <button onClick={() => setTodos([])} className="clearAll">
+      <button onClick={() => setTodos([])} className="clear-all">
         Clear all
       </button>
     </div>

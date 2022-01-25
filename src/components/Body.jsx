@@ -11,16 +11,16 @@ export default function Body() {
   const [currentlyActive, setCurrentlyActive] = useState("currentlyAll");
   const [todosLeft, setTodosLeft] = useState(0);
 
-
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
+
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
     const newHiddenTodo = [todo, ...hiddenList];
     setHiddenList(newHiddenTodo);
-    setTodosLeft(newTodos.length)
+    setTodosLeft(newTodos.length);
   };
 
   const handleRemove = (id) => {
@@ -37,8 +37,7 @@ export default function Body() {
     setTodos(hiddenList);
     setCurrentlyActive("currentlyAll");
     setHiddenList([]);
-    setTodosLeft(hiddenList.length)
-
+    setTodosLeft(hiddenList.length);
   };
 
   const setActive = () => {
@@ -51,16 +50,14 @@ export default function Body() {
       const reverseList = [...hiddenList].filter((item) => !item.complete);
       setTodos(reverseList);
       setCurrentlyActive("currentlyActive");
-      setTodosLeft(reverseList.length)
-
+      setTodosLeft(reverseList.length);
     } else {
       // store full list
       setHiddenList(todos);
       // showcase list
       setTodos(active);
       setCurrentlyActive("currentlyActive");
-      setTodosLeft(active.length)
-
+      setTodosLeft(active.length);
     }
   };
 
@@ -82,7 +79,7 @@ export default function Body() {
       setTodos(complete);
 
       setCurrentlyActive("currentlyComplete");
-      setTodosLeft(complete.length)
+      setTodosLeft(complete.length);
     }
   };
 
@@ -91,19 +88,16 @@ export default function Body() {
       setCurrentlyActive("currentlyAll");
       const filter = [...hiddenList].filter((item) => !item.complete);
       setTodos(filter);
-      setTodosLeft(filter.length)
-
+      setTodosLeft(filter.length);
     } else if (currentlyActive === "currentlyActive") {
       setCurrentlyActive("currentlyAll");
       const filterCompleted = [...todos].filter((item) => !item.complete);
       setTodos(filterCompleted);
-      setTodosLeft(filterCompleted.length)
-
+      setTodosLeft(filterCompleted.length);
     } else {
       const filterCompleted = [...todos].filter((item) => !item.complete);
       setTodos(filterCompleted);
-      setTodosLeft(filterCompleted.length)
-
+      setTodosLeft(filterCompleted.length);
     }
   };
 
@@ -111,9 +105,6 @@ export default function Body() {
   const setTheme = () => {
     setDark(() => !dark);
   };
-
-  
-
 
   return (
     <div className={dark ? "dark" : "light"}>
